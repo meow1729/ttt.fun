@@ -98,10 +98,14 @@ let sliderHeight = 180;
 let sliderMin = 1;
 let sliderMax = 20;
 
+let gameStarted = false;
+
 function setup() {
   
   createCanvas(1100, 1000);
   canvas.parent('sketch-container');
+
+  noLoop();
   frameRate(20);
   window.addEventListener("keydown", keyPressed);
   
@@ -124,6 +128,11 @@ function draw() {
   drawSpeedSlider();
   displayCurrentNote();
   drawCredits();
+}
+
+function startGame() {
+  gameStarted = true;
+  loop(); // Resume drawing loop
 }
 
 function drawChessboard() {
