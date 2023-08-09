@@ -99,6 +99,7 @@ let sliderMin = 1;
 let sliderMax = 20;
 
 function setup() {
+  getAudioContext().suspend();
   createCanvas(1100, 1000);
   frameRate(20);
   window.addEventListener("keydown", keyPressed);
@@ -247,6 +248,7 @@ function displayCurrentNote() {
   text("🎵" + keyNames[currentNoteIndex], sliderX + sliderWidth / 2 + 30, sliderY + sliderHeight + 250); // Position it 100 pixels below the slider
 }
  function keyPressed() {
+   userStartAudio();
   let keyIndex = keyLabels.indexOf(key);
   if (keyCode === RIGHT_ARROW) {
     currentNoteIndex = (currentNoteIndex + 0.5) % pianoFrequencies.length;
