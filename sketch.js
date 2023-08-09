@@ -101,6 +101,7 @@ let sliderMax = 20;
 function setup() {
   
   createCanvas(1100, 1000);
+  canvas.parent('sketch-container');
   frameRate(20);
   window.addEventListener("keydown", keyPressed);
   
