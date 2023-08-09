@@ -103,7 +103,7 @@ let gameStarted = false;
 function setup() {
   
   createCanvas(1100, 1000);
-  canvas.parent('sketch-container');
+  canvas.parent('canvas-container');
 
   noLoop();
   frameRate(20);
