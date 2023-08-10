@@ -7,10 +7,10 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(45,30,15);
 
   // Draw the rectangle as a placeholder for the logo
-  fill(100);
+  fill(0);
   let logoX = width / 2;
   let logoY = height / 3;
   let logoWidth = 400;
