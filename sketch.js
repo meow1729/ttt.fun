@@ -1,4 +1,3 @@
-
 class PianoKey {
   constructor(frequency) {
     this.oscillator = new p5.Oscillator('sine');
@@ -83,7 +82,7 @@ let arrowKeySound = new PianoKey(pianoFrequencies[currentNoteIndex]);
 let x = 500;
 let y = 500;
 let speed = 10;
-let tl = 400;
+let tl = 800;
 let angle = 0;
 let angleChange = Math.PI / 6;
 let trail = [];
@@ -98,15 +97,9 @@ let sliderHeight = 180;
 let sliderMin = 1;
 let sliderMax = 20;
 
-let gameStarted = false;
-
 function setup() {
-  
   createCanvas(1100, 1000);
-  canvas.parent('canvas-container');
-
-  noLoop();
-  frameRate(20);
+  frameRate(60);
   window.addEventListener("keydown", keyPressed);
   
   for (let i = 0; i < keyLabels.length; i++) {
@@ -115,24 +108,16 @@ function setup() {
 }
 function draw() {
   background(45, 30, 15);
-  drawChessboard();
+  
   moveLine();
   drawLine();
   checkCollision();
   displayGameOverMessage();
 
-  fill(0, 100, 0, 150);
-  noStroke();
-  rect(1000, 0, 100, height);
 
-  drawSpeedSlider();
-  displayCurrentNote();
-  drawCredits();
-}
-
-function startGame() {
-  gameStarted = true;
-  loop(); // Resume drawing loop
+  //drawSpeedSlider();
+ // displayCurrentNote();
+  //drawCredits();
 }
 
 function drawChessboard() {
@@ -146,7 +131,7 @@ function drawChessboard() {
       if ((i + j) % 2 === 0) {
         fill(45, 30, 15);
       } else {
-        fill(0);
+        fill(45,30,15);
       }
 
       rect(xCoord, yCoord, squareSize, squareSize);
@@ -244,7 +229,7 @@ function drawCredits() {
   text(" a and d " , sliderX + sliderWidth / 2 + 30+5, sliderY + sliderHeight + 540); 
   
   textSize(8);
-  text(" TouchTuneTapestry v0.1  " , sliderX + sliderWidth / 2 + 30 +5, sliderY + sliderHeight + 680);
+  text(" TapTuneTapestry v0.1  " , sliderX + sliderWidth / 2 + 30 +5, sliderY + sliderHeight + 680);
   
     textSize(12);
   text(" >.<  " , sliderX + sliderWidth / 2 + 30 +5, sliderY + sliderHeight + 700);
@@ -258,31 +243,30 @@ function displayCurrentNote() {
   text("🎵" + keyNames[currentNoteIndex], sliderX + sliderWidth / 2 + 30, sliderY + sliderHeight + 250); // Position it 100 pixels below the slider
 }
  function keyPressed() {
-   
   let keyIndex = keyLabels.indexOf(key);
   if (keyCode === RIGHT_ARROW) {
-    currentNoteIndex = (currentNoteIndex + 0.5) % pianoFrequencies.length;
-    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
-    arrowKeySound.play();
-    angle += angleChange;
-    ballColor = [255, 255, 0];
-  } else if (keyCode === LEFT_ARROW) {
-    currentNoteIndex = (currentNoteIndex - 0.5 + pianoFrequencies.length) % pianoFrequencies.length;
-    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
-    arrowKeySound.play();
-    angle -= angleChange;
-    ballColor = [255, 105, 180];
-  } else if (key === 'a') {
-    currentNoteIndex = (currentNoteIndex - 1 + pianoFrequencies.length) % pianoFrequencies.length;
-    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
-    arrowKeySound.play();
-    angle -= angleChange * 3 / 2; // Adjust angle and color as desired
-    ballColor = [0, 255, 0];
-  } else if (key === 'd') {
     currentNoteIndex = (currentNoteIndex + 1) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
-    angle += angleChange * 3 / 2; // Adjust angle and color as desired
+    angle += angleChange * 2;
+    ballColor = [255, 255, 0];
+  } else if (keyCode === LEFT_ARROW) {
+    currentNoteIndex = (currentNoteIndex - 1 + pianoFrequencies.length) % pianoFrequencies.length;
+    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
+    arrowKeySound.play();
+    angle -= angleChange *2 ;
+    ballColor = [255, 105, 180];
+  } else if (key === 'a') {
+    currentNoteIndex = (currentNoteIndex - 2 + pianoFrequencies.length) % pianoFrequencies.length;
+    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
+    arrowKeySound.play();
+    angle -= angleChange * 3 ; // Adjust angle and color as desired
+    ballColor = [0, 255, 0];
+  } else if (key === 'd') {
+    currentNoteIndex = (currentNoteIndex + 2) % pianoFrequencies.length;
+    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
+    arrowKeySound.play();
+    angle += angleChange * 3 ; // Adjust angle and color as desired
     ballColor = [255, 0, 0];
   } else {
     if (key === "+") {
@@ -335,5 +319,3 @@ function mouseDragged() {
     speed = map(newY, sliderY + sliderHeight, sliderY, sliderMin, sliderMax);
   }
 }
-
-;
