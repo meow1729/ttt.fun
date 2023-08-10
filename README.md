@@ -1,2 +1,2 @@
 # ttt.fun
-Touch Tune Tapestry
+Tap Tune Tapestry
