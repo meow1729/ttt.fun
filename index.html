@@ -1,24 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ttt v0.1</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+  
+  
+  <script src="loader.js"></script>
 </head>
 <body>
-    <button id="enterButton">Enter Game</button>
-    <div id="game-container" style="display:none;">
-        <div id="canvas-container"><!-- The canvas will be attached here --></div>
-    </div>
-    <script>
-        document.getElementById('enterButton').addEventListener('click', function() {
-            document.getElementById('game-container').style.display = 'block';
-            document.getElementById('enterButton').style.display = 'none';
-            // You can initialize your game here if needed
-        });
-    </script>
-    <script src="sketch.js"></script>
+  <div id="p5-container"></div>
 </body>
 </html>
