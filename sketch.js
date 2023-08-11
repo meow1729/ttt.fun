@@ -79,8 +79,8 @@ let currentNoteIndex = 15;
 let arrowKeySound = new PianoKey(pianoFrequencies[currentNoteIndex]);
 
 
-let x = 500;
-let y = 500;
+let x = (windowWidth-100)/2;
+let y = (windowHeight-100)/2;
 let speed = 10;
 let tl = 800;
 let angle = 0;
@@ -190,8 +190,8 @@ function gameOver() {
 
 function resetRound() {
   gameOverMessage = "";
-  x = 500;
-  y = 500;
+  x = (windowWidth-100)/2;
+  y = (windowHeight-100)/2;
   angle = 0;
   trail = [];
   ballColor = [255, 105, 180];
