@@ -25,12 +25,12 @@ function draw() {
   }
   
   // Draw the game name
-  fill(0);
+  fill(228, 208, 10);
   textSize(32);
   text("TTT.FUN", width / 2, height / 2);
 
   // Draw the instructions
-  textSize(20);
+  textSize(10);
   text("TapTuneTapestry v0.1", width / 2, height / 2 + 40);
   textSize(16);
   text("Use L/R arrow keys *and* A and D", width / 2, height / 2 + 70);
