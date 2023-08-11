@@ -99,7 +99,7 @@ let sliderMax = 20;
 
 function setup() {
   createCanvas(1100, 1000);
-  frameRate(10);
+  frameRate(20);
   window.addEventListener("keydown", keyPressed);
   
   for (let i = 0; i < keyLabels.length; i++) {
