@@ -1,7 +1,10 @@
 let circleX, circleY, circleSize;
 
 function setup() {
+ 
   createCanvas(windowWidth-100, windowHeight-100).parent('p5-container');
+  frameRate(10);
+  
   textAlign(CENTER, CENTER); // Align text to the center
   rectMode(CENTER); // Align rectangle to the center
 }
