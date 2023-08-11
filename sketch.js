@@ -129,9 +129,9 @@ function drawChessboard() {
       let yCoord = j * squareSize;
 
       if ((i + j) % 2 === 0) {
-        fill(45, 30, 15);
+        fill(0, 0, 0);
       } else {
-        fill(45,30,15);
+        fill(0,0,0);
       }
 
       rect(xCoord, yCoord, squareSize, squareSize);
