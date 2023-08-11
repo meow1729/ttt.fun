@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  background(45,30,15);
+  background(0,0,0);
 
   // Draw the rectangle as a placeholder for the logo
   fill(0);
