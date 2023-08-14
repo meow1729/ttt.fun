@@ -34,9 +34,9 @@ function draw() {
 
   // Draw the instructions
   textSize(10);
-  text("TapTuneTapestry v0.1", width / 2, height / 2 + 40);
+  text("TapTuneTapestry v0.2", width / 2, height / 2 + 40);
   textSize(16);
-  text("Use L/R arrow keys *and* A and D", width / 2, height / 2 + 70);
+  text("CONTROLS : S,D,F,J,K,L. Key function should be self-evident.", width / 2, height / 2 + 70);
   text("Press any key to start the fun", width / 2, height / 2 + 100);
 }
 
