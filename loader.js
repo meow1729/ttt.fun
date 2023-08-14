@@ -29,8 +29,7 @@ function draw() {
   
   // Draw the game name
   fill(250, 250, 250);
-  textSize(32);
-  text("TTT.FUN", width / 2, height / 2);
+ 
 
   // Draw the instructions
   textSize(10);
