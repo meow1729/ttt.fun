@@ -78,6 +78,7 @@ let keyNames = [
 let currentNoteIndex = 15;
 let arrowKeySound = new PianoKey(pianoFrequencies[currentNoteIndex]);
 
+let gapCounter = 0;
 
 let x = (windowWidth-100)/2;
 let y = (windowHeight-100)/2;
@@ -140,6 +141,9 @@ function drawChessboard() {
 }
 
 function moveLine() {
+  // Increment the gapCounter
+  gapCounter++;
+
   x += speed * cos(angle);
   y += speed * sin(angle);
 
@@ -154,23 +158,41 @@ function moveLine() {
   } else if (y < 0) {
     y = height;
   }
-
+if (gapCounter % 23 < 20) {
   trail.push({ x: x, y: y, color: ballColor });
-  if (trail.length > tl ) {
+} else {
+  trail.push({ x: x, y: y, color: [128, 128, 128], isGap: true }); // dark gray color for the gaps
+}
+
+  if (trail.length > tl) {
     trail.shift();
   }
 }
 
 function drawLine() {
   for (let i = 0; i < trail.length; i++) {
-    stroke(trail[i].color);
-    strokeWeight(7);
+    if (trail[i].isGap) {
+      // you can choose to draw the gaps differently here, e.g., with a smaller stroke size
+      stroke(trail[i].color);
+      strokeWeight(3);
+    } else {
+      stroke(trail[i].color);
+      strokeWeight(7);
+    }
     point(trail[i].x, trail[i].y);
   }
 }
 
+
+
+
 function checkCollision() {
   for (let i = 0; i < trail.length - 1; i++) {
+    // Only perform the check if both points are not part of the gap
+    if (trail[i].isGap || (gapCounter % 23 >= 20)) {
+      continue;
+    }
+
     let d = dist(x, y, trail[i].x, trail[i].y);
     if (d < 7) {
       gameOver();
@@ -195,6 +217,7 @@ function resetRound() {
   angle = 0;
   trail = [];
   ballColor = [255, 105, 180];
+gapCounter = 0;
 }
 
 function displayGameOverMessage() {
@@ -244,31 +267,49 @@ function displayCurrentNote() {
 }
  function keyPressed() {
   let keyIndex = keyLabels.indexOf(key);
-  if (keyCode === RIGHT_ARROW) {
-    currentNoteIndex = (currentNoteIndex + 1) % pianoFrequencies.length;
+  if (key === 'k') {
+    currentNoteIndex = (currentNoteIndex + 2) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle += angleChange * 2;
     ballColor = [255, 255, 0];
-  } else if (keyCode === LEFT_ARROW) {
-    currentNoteIndex = (currentNoteIndex - 1 + pianoFrequencies.length) % pianoFrequencies.length;
+  } else if (key === 'd') {
+    currentNoteIndex = (currentNoteIndex - 2 + pianoFrequencies.length) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle -= angleChange *2 ;
     ballColor = [255, 105, 180];
-  } else if (key === 'a') {
-    currentNoteIndex = (currentNoteIndex - 2 + pianoFrequencies.length) % pianoFrequencies.length;
+  } else if (key === 'f') {
+    currentNoteIndex = (currentNoteIndex - 3 + pianoFrequencies.length) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle -= angleChange * 3 ; // Adjust angle and color as desired
     ballColor = [0, 255, 0];
-  } else if (key === 'd') {
-    currentNoteIndex = (currentNoteIndex + 2) % pianoFrequencies.length;
+  } else if (key === 'j') {
+    currentNoteIndex = (currentNoteIndex + 3) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle += angleChange * 3 ; // Adjust angle and color as desired
     ballColor = [255, 0, 0];
-  } else {
+  }
+else if (key === 's') {
+    currentNoteIndex = (currentNoteIndex - 1 + pianoFrequencies.length) % pianoFrequencies.length;
+    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
+    arrowKeySound.play();
+    angle -= angleChange  ;
+    ballColor = [173, 216, 230];
+  }
+
+else if (key === 'l') {
+    currentNoteIndex = (currentNoteIndex + 1) % pianoFrequencies.length;
+    arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
+    arrowKeySound.play();
+    angle += angleChange * 1 ; // Adjust angle and color as desired
+    ballColor = [255, 165, 0];
+  }
+
+
+ else {
     if (key === "+") {
       increaseSpeed();
     } else if (key === "-") {
