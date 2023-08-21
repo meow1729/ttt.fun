@@ -267,7 +267,7 @@ function displayCurrentNote() {
 }
  function keyPressed() {
   let keyIndex = keyLabels.indexOf(key);
-  if (key === 'k') {
+  if (key === 'k' ||| key === '2' ) {
     currentNoteIndex = (currentNoteIndex + 2) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
