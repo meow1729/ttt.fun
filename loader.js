@@ -35,8 +35,8 @@ function draw() {
   textSize(10);
   text("TapTuneTapestry v0.2.1", width / 2, height / 2 + 40);
   textSize(16);
-  text("CONTROLS : S,D,F,J,K,L. Key function should be self-evident.", width / 2, height / 2 + 70);
-  text("Alternate CONTROLS: Z,X,C,1,2,3 (ideal for 104-key keyboards)", width / 2, height / 2 + 100);
+  text("Controls : S,D,F,J,K,L. Key function should be self-evident.", width / 2, height / 2 + 70);
+  text("Alternate Controls: Z,X,C,1,2,3 (ideal for 104-key keyboards)", width / 2, height / 2 + 100);
  text("Press any key to start the fun", width / 2, height / 2 + 130);
 }
 
