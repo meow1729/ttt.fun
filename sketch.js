@@ -267,32 +267,32 @@ function displayCurrentNote() {
 }
  function keyPressed() {
   let keyIndex = keyLabels.indexOf(key);
-  if (key === 'k' ||| key === '2' ) {
+  if (key === 'k' || key === '2' ) {
     currentNoteIndex = (currentNoteIndex + 2) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle += angleChange * 2;
     ballColor = [255, 255, 0];
-  } else if (key === 'd') {
+  } else if (key === 'd' || key === 'x') {
     currentNoteIndex = (currentNoteIndex - 2 + pianoFrequencies.length) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle -= angleChange *2 ;
     ballColor = [255, 105, 180];
-  } else if (key === 'f') {
+  } else if (key === 'f' || key === 'c') {
     currentNoteIndex = (currentNoteIndex - 3 + pianoFrequencies.length) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle -= angleChange * 3 ; // Adjust angle and color as desired
     ballColor = [0, 255, 0];
-  } else if (key === 'j') {
+  } else if (key === 'j' || key === '1') {
     currentNoteIndex = (currentNoteIndex + 3) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
     angle += angleChange * 3 ; // Adjust angle and color as desired
     ballColor = [255, 0, 0];
   }
-else if (key === 's') {
+else if (key === 's' || key === 'z') {
     currentNoteIndex = (currentNoteIndex - 1 + pianoFrequencies.length) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
@@ -300,7 +300,7 @@ else if (key === 's') {
     ballColor = [173, 216, 230];
   }
 
-else if (key === 'l') {
+else if (key === 'l' || key === '3') {
     currentNoteIndex = (currentNoteIndex + 1) % pianoFrequencies.length;
     arrowKeySound.oscillator.freq(pianoFrequencies[currentNoteIndex]);
     arrowKeySound.play();
